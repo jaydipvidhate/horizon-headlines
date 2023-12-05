@@ -3,22 +3,17 @@
 @tailwind utilities;
 
 @layer utilities {
-  .dark_light_gradient {
-    background: linear-gradient(
-      40deg,
-      #000000,
-      rgb(0, 0, 0.9),
-      rgba(0, 0, 0, 0.619),
-      #00000000
-    );
+  * {
+    -webkit-tap-highlight-color: transparent;
   }
-  .dark_light_gradient_bottom_top {
-    background: linear-gradient(
-      10deg,
-      #000000,
-      rgba(0, 0, 0, 0.595),
-      #00000010,
-      #00000000
-    );
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

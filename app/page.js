@@ -1,4 +1,6 @@
+import CategoriesSection from "@/components/pages/home/CategoriesSection";
 import Hero from "@/components/pages/home/Hero";
+import NewsSection from "@/components/pages/home/NewsSection";
 import { getAllNews } from "@/lib/utilities/GetApi";
 import Image from "next/image";
 
@@ -9,5 +11,11 @@ export default async function Home() {
   }
 
   // const heroNews = Math.floor(Math.random() * news.length);
-  return <Hero heroNews={news[0]} />;
+  return (
+    <>
+      <Hero heroNews={news[0]} />
+      <NewsSection news={news} />
+      <CategoriesSection />
+    </>
+  );
 }

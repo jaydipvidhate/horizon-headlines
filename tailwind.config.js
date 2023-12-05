@@ -32,10 +32,8 @@ module.exports = {
         largeCard: "21/9",
       },
       flex: {
-        flexProductSm: "0 0 60%",
-        flexProductMd: "0 0 40%",
-        flexCollectionsMd: "0 0 60%",
-        flexProductLg: "0 0 24%",
+        flexCategoryLg: "0 0 20%",
+        flexCategoryMd: "0 0 60%",
       },
       width: {
         productGap: "48%",

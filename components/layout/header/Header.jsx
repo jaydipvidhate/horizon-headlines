@@ -45,7 +45,7 @@ const Header = () => {
         />
 
         <div
-          className={`w-full h-full fixed p-10 px-4 top-0 left-0 flex flex-col gap-y-10
+          className={`w-full h-full fixed p-10 md:hidden px-4 top-0 left-0 flex flex-col gap-y-10
            z-50 bg-black duration-200 ease-in-out ${
              isMenuOpen ? "translate-x-0" : "-translate-x-full"
            }`}
