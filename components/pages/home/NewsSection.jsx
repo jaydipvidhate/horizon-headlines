@@ -6,14 +6,20 @@ import React, { useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { CiGrid41, CiGrid2H } from "react-icons/ci";
 
-const NewsSection = ({ news, handleLoadMore, hasMore, loading }) => {
+const NewsSection = ({
+  news,
+  handleLoadMore,
+  hasMore,
+  loading,
+  title = "The Latest",
+}) => {
   const [isCol, setIsCol] = useState(false);
   const toggleGrid = () => setIsCol(!isCol);
   return (
     <div className="max-w-lg mx-auto flex gap-10 md:gap-4 flex-col-reverse md:flex-row">
       <div className="w-full md:w-3/5 lg:w-2/3 flex  p-4 flex-col gap-2 md:gap-10 md:pr-10">
         <div className="flex justify-between items-start">
-          <SectionTitle title="The Latest" />
+          <SectionTitle title={title} />
           {isCol ? (
             <CiGrid2H
               onClick={toggleGrid}

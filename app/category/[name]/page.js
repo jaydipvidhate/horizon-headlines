@@ -1,6 +1,8 @@
 "use client";
 
+import Footer from "@/components/layout/footer/Footer";
 import GenericHero from "@/components/pages/GenericHero";
+import CategoriesSection from "@/components/pages/home/CategoriesSection";
 import NewsSection from "@/components/pages/home/NewsSection";
 import app from "@/lib/firebase";
 import { getAllNews, getNewsByCategories } from "@/lib/utilities/GetApi";
@@ -74,6 +76,8 @@ const page = ({ params }) => {
         hasMore={hasMore}
         loading={loading}
       />
+      <CategoriesSection />
+      <Footer />
     </div>
   );
 };

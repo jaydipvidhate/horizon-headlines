@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { FaDotCircle } from "react-icons/fa";
 import { RxHeart, RxHeartFilled } from "react-icons/rx";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { IoMdCloseCircle } from "react-icons/io";
 
 const auth = getAuth(app);
 
@@ -40,6 +41,7 @@ const NewsCard = ({ news, isCol }) => {
 
   const [isFav, setIsFav] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [newsClicked, setNewsClicked] = useState(null);
 
   useEffect(() => {
     const checkFavoriteStatus = async () => {
@@ -86,60 +88,83 @@ const NewsCard = ({ news, isCol }) => {
   };
 
   return (
-    <div
-      // href={textToSlug(news.title)}
-      className="flex gap-4 cursor-pointer group items-start flex-col md:flex-row"
-    >
+    <>
       <div
-        className={`w-full md:w-32 ${
-          isCol ? "aspect-square" : "aspect-largeCard"
-        } md:aspect-square rounded-lg bg-black/20 relative overflow-hidden`}
+        onClick={() => setNewsClicked(news.url)}
+        className="flex gap-4 cursor-pointer group items-start flex-col md:flex-row"
       >
-        {news?.urlToImage && (
-          <Image
-            src={news?.urlToImage}
-            fill
-            className="object-cover group-hover:scale-110 duration-300 ease-in-out"
-          />
-        )}
-      </div>
-      <div className="flex-1 flex flex-col gap-2 justify-between items-start relative pr-6">
-        {auth.currentUser ? (
-          loading ? (
-            <AiOutlineLoading3Quarters className="text-black text-lg absolute top-0 right-0 animate-spin" />
-          ) : isFav ? (
-            <RxHeartFilled
-              onClick={() => (!loading ? handleAddToFavorite() : "")}
-              className="text-black text-xl absolute top-0 right-0"
+        <div
+          className={`w-full md:w-32 ${
+            isCol ? "aspect-square" : "aspect-largeCard"
+          } md:aspect-square rounded-lg bg-black/20 relative overflow-hidden`}
+        >
+          {news?.urlToImage && (
+            <Image
+              src={news?.urlToImage}
+              fill
+              sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33.3vw"
+              alt="News Banner"
+              priority={true}
+              className="object-cover group-hover:scale-110 duration-300 ease-in-out"
             />
-          ) : (
-            <RxHeart
-              onClick={() => (!loading ? handleAddToFavorite() : "")}
-              className="text-black text-xl absolute top-0 right-0"
-            />
-          )
-        ) : null}
-        <div>
-          <h4 className="text-base font-semibold leading-tight">
-            {news.title}
-          </h4>
-          {!isCol && (
-            <p className="text-sm font-light tracking-tight">
-              {news.description ? news.description : news.content}
-            </p>
           )}
         </div>
-        <div
-          className={`flex gap-2 items-center opacity-40 ${
-            isCol ? "flex-col" : "flex-row"
-          }`}
-        >
-          <p className="text-black text-sm">{formattedDate}</p>
-          {!isCol && <FaDotCircle className="text-black/40 text-xs" />}
-          {!isCol && <p className="text-black text-sm">{relativeTime}</p>}
+        <div className="flex-1 flex flex-col gap-2 justify-between items-start relative pr-6">
+          {auth.currentUser ? (
+            loading ? (
+              <AiOutlineLoading3Quarters className="text-black text-lg absolute top-0 right-0 animate-spin" />
+            ) : isFav ? (
+              <RxHeartFilled
+                onClick={() => (!loading ? handleAddToFavorite() : "")}
+                className="text-black text-xl absolute top-0 right-0"
+              />
+            ) : (
+              <RxHeart
+                onClick={() => (!loading ? handleAddToFavorite() : "")}
+                className="text-black text-xl absolute top-0 right-0"
+              />
+            )
+          ) : null}
+          <div>
+            <h4 className="text-base font-semibold leading-tight">
+              {news.title}
+            </h4>
+            {!isCol && (
+              <p className="text-sm font-light tracking-tight">
+                {news.description ? news.description : news.content}
+              </p>
+            )}
+          </div>
+          <div
+            className={`flex gap-2 items-center opacity-40 ${
+              isCol ? "flex-col" : "flex-row"
+            }`}
+          >
+            <p className="text-black text-sm">{formattedDate}</p>
+            {!isCol && <FaDotCircle className="text-black/40 text-xs" />}
+            {!isCol && <p className="text-black text-sm">{relativeTime}</p>}
+          </div>
         </div>
       </div>
-    </div>
+      {newsClicked && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black/20 backdrop-blur-md z-50 p-8 md:p-20 inset-0">
+          <div
+            onClick={() => setNewsClicked(null)}
+            className="w-full h-full bg-black/20 absolute top-0 left-0"
+          ></div>
+          <IoMdCloseCircle
+            onClick={() => setNewsClicked(null)}
+            className="absolute cursor-pointer top-4 right-4 z-20 md:top-10 md:right-10 text-3xl text-white rounded-full hover:scale-110 duration-200 ease-in-out"
+          />
+
+          <iframe
+            src={newsClicked}
+            title="W3Schools Free Online Web Tutorials"
+            className="w-full h-full relative rounded-md shadow-md shadow-black/20"
+          ></iframe>
+        </div>
+      )}
+    </>
   );
 };
 

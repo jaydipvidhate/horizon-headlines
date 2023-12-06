@@ -11,7 +11,7 @@ export const useAuthContext = () => React.useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = React.useState(null);
-  const [loading, setLoading] = React.useState(true);
+  // const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -20,7 +20,7 @@ export const AuthContextProvider = ({ children }) => {
       } else {
         setUser(null);
       }
-      setLoading(false);
+      // setLoading(false);
     });
 
     return () => unsubscribe();
@@ -28,13 +28,15 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user }}>
-      {loading ? (
-        <div className="w-screen h-screen bg-black flex items-center justify-center">
-          <RiLoaderLine className="text-white text-2xl animate-spin" />
-        </div>
-      ) : (
+      {
+        // loading ? (
+        //   <div className="w-screen h-screen bg-black flex items-center justify-center">
+        //     <RiLoaderLine className="text-white text-2xl animate-spin" />
+        //   </div>
+        // ) : (
         children
-      )}
+        // )
+      }
     </AuthContext.Provider>
   );
 };

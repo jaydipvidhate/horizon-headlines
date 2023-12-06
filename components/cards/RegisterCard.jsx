@@ -14,6 +14,7 @@ import {
   updateProfile,
   getAuth,
 } from "firebase/auth";
+import { IoMdCloseCircle } from "react-icons/io";
 
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -49,15 +50,12 @@ const RegisterCard = ({
       await updateProfile(auth.currentUser, {
         displayName: registerDetails.name.trim(),
       });
-      console.log(result.user.uid, {
-        name: registerDetails.name,
-        email: registerDetails.email,
-      });
+
       await setDoc(doc(db, "users", result.user.uid), {
         name: registerDetails.name,
         email: registerDetails.email,
       })
-        .then(() => console.log("ader"))
+        .then(() => console.log("User Added to collection"))
         .catch((err) => console.log(err));
 
       setLoading(false);
@@ -73,12 +71,19 @@ const RegisterCard = ({
 
   return (
     <div className="p-10 bg-white rounded-lg flex flex-col gap-4 w-screen max-w-2xl mx-auto relative">
+      <IoMdCloseCircle
+        onClick={() => registerClose()}
+        className="absolute cursor-pointer top-4 z-20 right-4 text-3xl text-black rounded-full hover:scale-110 duration-200 ease-in-out"
+      />
       <div href="/" className="relative w-40 h-10 cursor-pointer">
         <Image
           src={
             "https://res.cloudinary.com/dllqtyi1j/image/upload/v1701783294/horizon-headlines/HHLogo_ez3plw.svg"
           }
           fill
+          sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33.3vw"
+          priority={true}
+          alt="Horizon Headlines Logo"
           className="object-contain"
         />
       </div>

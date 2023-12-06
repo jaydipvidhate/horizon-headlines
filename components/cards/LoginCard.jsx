@@ -7,6 +7,7 @@ import SolidBtn from "../atoms/btn/SolidBtn";
 import BorderdBtn from "../atoms/btn/BorderdBtn";
 import app from "@/lib/firebase";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { IoMdCloseCircle } from "react-icons/io";
 
 const auth = getAuth(app);
 const LoginCard = ({ loginClose, loginOpen, registerClose, registerOpen }) => {
@@ -15,6 +16,7 @@ const LoginCard = ({ loginClose, loginOpen, registerClose, registerOpen }) => {
     password: "",
   });
   const [loading, setLoading] = useState(false);
+  const [noUser, setNoUser] = useState(false);
 
   const handleInputChange = (e, name) => {
     setLoginDetails({ ...loginDetails, [e.target.name]: e.target.value });
@@ -40,12 +42,19 @@ const LoginCard = ({ loginClose, loginOpen, registerClose, registerOpen }) => {
 
   return (
     <div className="p-10 bg-white rounded-lg flex flex-col gap-4 w-screen max-w-2xl mx-auto relative">
+      <IoMdCloseCircle
+        onClick={() => loginClose()}
+        className="absolute cursor-pointer top-4 z-20 right-4 text-3xl text-black rounded-full hover:scale-110 duration-200 ease-in-out"
+      />
       <div href="/" className="relative w-40 h-10 cursor-pointer">
         <Image
           src={
             "https://res.cloudinary.com/dllqtyi1j/image/upload/v1701783294/horizon-headlines/HHLogo_ez3plw.svg"
           }
+          alt="Horizon Headlines Logo"
+          priority={true}
           fill
+          sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33.3vw"
           className="object-contain"
         />
       </div>
@@ -71,6 +80,7 @@ const LoginCard = ({ loginClose, loginOpen, registerClose, registerOpen }) => {
       </div>
       <SolidBtn
         title={loading ? "Loading" : "Login"}
+        loading={loading}
         handleClick={!loading && handleOnSubmit}
       />
       <BorderdBtn

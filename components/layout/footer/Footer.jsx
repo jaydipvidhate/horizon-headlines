@@ -13,7 +13,10 @@ const Footer = () => {
             src={
               "https://res.cloudinary.com/dllqtyi1j/image/upload/v1701836122/horizon-headlines/FooterBG_ulz9mk.webp"
             }
+            sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33.3vw"
             fill
+            priority={false}
+            alt="Footer Banner Bg"
             className="object-cover brightness-[0.3]"
           />
         </div>
@@ -35,6 +38,9 @@ const Footer = () => {
               "https://res.cloudinary.com/dllqtyi1j/image/upload/v1701783317/horizon-headlines/HHIcon_nqnipb.svg"
             }
             fill
+            sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33.3vw"
+            priority={true}
+            alt="Horizon Headlines Logo"
             className="object-fill"
           />
         </Link>

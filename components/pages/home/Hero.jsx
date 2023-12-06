@@ -8,12 +8,14 @@ import { FaAngleRight, FaDotCircle } from "react-icons/fa";
 const Hero = ({ heroNews }) => {
   return (
     <div className="w-full aspect-video md:aspect-largeCard md:bg-black/70 relative overflow-hidden">
-      {heroNews?.urlToImage !== "" ? (
+      {heroNews?.urlToImage ? (
         <Image
-          src={heroNews?.urlToImage}
-          alt={heroNews?.title}
+          src={heroNews.urlToImage}
+          alt="news Banner"
           loading="eager"
+          priority={true}
           fill
+          sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33.3vw"
           className="object-cover"
         />
       ) : (
@@ -30,8 +32,8 @@ const Hero = ({ heroNews }) => {
             </h2>
           ) : (
             <div className="w-full">
-              <h2 className="p-4 bg-white/20 w-full mb-3 rounded-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl"></h2>
-              <h2 className="p-4 bg-white/20 w-1/3 mb-3 rounded-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl"></h2>
+              <h2 className="p-3 md:p-4 bg-white/20 w-full mb-3 rounded-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl"></h2>
+              <h2 className="p-3 md:p-4 bg-white/20 w-1/3 mb-3 rounded-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl"></h2>
             </div>
           )}
           <div className="items-center gap-4 flex mb-6 md:mb-0 opacity-60">

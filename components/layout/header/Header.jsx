@@ -11,26 +11,27 @@ import RegisterCard from "@/components/cards/RegisterCard";
 import { useAuthContext } from "@/components/AuthProvider";
 import { getAuth, signOut } from "firebase/auth";
 import app from "@/lib/firebase";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const { user } = useAuthContext();
   const auth = getAuth(app);
-
+  const router = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginCardOpen, setIsLoginCardOpen] = useState(false);
   const [isRegisterCardOpen, setIsRegisterCardOpen] = useState(false);
   const headerLinks = [
     {
-      title: "News",
-      slug: "/news",
+      title: "Business",
+      slug: "/category/business",
     },
     {
-      title: "Travel",
-      slug: "/travel",
+      title: "Entertainment",
+      slug: "/category/entertainment",
     },
     {
-      title: "AboutUs",
-      slug: "/about-us",
+      title: "Science",
+      slug: "/category/Science",
     },
   ];
 
@@ -50,6 +51,7 @@ const Header = () => {
         // An error happened.
       });
   };
+
   return (
     <>
       <div className=" bg-white px-4 py-4">
@@ -59,7 +61,10 @@ const Header = () => {
               src={
                 "https://res.cloudinary.com/dllqtyi1j/image/upload/v1701783294/horizon-headlines/HHLogo_ez3plw.svg"
               }
+              priority={true}
               fill
+              sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33.3vw"
+              alt="Horizon Headlines Logo"
               className="object-contain"
             />
           </Link>
@@ -84,7 +89,9 @@ const Header = () => {
                   key={index}
                   href={link.slug}
                   onClick={menuClose}
-                  className="hover:text-primary text-white border-b-2 border-transparent hover:border-primary  border-solid"
+                  className={`${
+                    router == link.slug && "text-primary border-primary"
+                  }hover:text-primary text-white border-b-2 border-transparent hover:border-primary  border-solid`}
                 >
                   <p className=" text-base font-medium tracking-tighter">
                     {link.title}
@@ -92,6 +99,19 @@ const Header = () => {
                 </Link>
               ))}
             </div>
+            {user && (
+              <Link
+                href="/favourite"
+                onClick={menuClose}
+                className={`hover:text-primary md:hidden flex text-white ${
+                  router == "/favourite" && "text-primary"
+                }`}
+              >
+                <p className=" text-base font-medium tracking-tighter">
+                  My Favourites
+                </p>
+              </Link>
+            )}
             {user ? (
               <>
                 <h4 className="text-base text-white font-light">
@@ -123,20 +143,36 @@ const Header = () => {
             )}
           </div>
 
-          <div className="items-center gap-6 md:gap-20 md:flex hidden">
+          <div className="items-center gap-6 md:gap-10 md:flex hidden">
             <div className="flex items-center gap-6 md:gap-8">
               {headerLinks.map((link, index) => (
                 <Link
                   key={index}
                   href={link.slug}
-                  className="hover:text-primary text-black border-b-2 border-transparent hover:border-primary  border-solid"
+                  className={`hover:text-primary text-black border-b-2 border-transparent hover:border-primary  border-solid ${
+                    router == link.slug && "text-primary "
+                  }`}
                 >
                   <p className=" text-base font-medium tracking-tighter">
                     {link.title}
                   </p>
                 </Link>
               ))}
+              {user && (
+                <Link
+                  href="/favourite"
+                  onClick={menuClose}
+                  className={`hover:text-primary text-black ${
+                    router == "/favourite" && "text-primary "
+                  }`}
+                >
+                  <p className=" text-base font-medium tracking-tighter">
+                    My Favourites
+                  </p>
+                </Link>
+              )}
             </div>
+
             <div className="flex items-center gap-4">
               {user ? (
                 <>
