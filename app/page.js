@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/footer/Footer";
 import CategoriesSection from "@/components/pages/home/CategoriesSection";
 import Hero from "@/components/pages/home/Hero";
 import NewsSection from "@/components/pages/home/NewsSection";
@@ -14,8 +15,9 @@ export default async function Home() {
   return (
     <>
       <Hero heroNews={news[0]} />
-      <NewsSection news={news} />
       <CategoriesSection />
+      <NewsSection news={news} />
+      <Footer />
     </>
   );
 }

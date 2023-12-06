@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { CiGrid41, CiGrid2H } from "react-icons/ci";
 
 const NewsSection = ({ news }) => {
-  const [isCol, setIsCol] = useState(true);
+  const [isCol, setIsCol] = useState(false);
   const toggleGrid = () => setIsCol(!isCol);
   return (
     <div className="max-w-lg mx-auto flex gap-10 md:gap-4 flex-col-reverse md:flex-row">

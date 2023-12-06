@@ -66,7 +66,7 @@ const NewsCard = ({ news, isCol }) => {
         >
           <p className="text-black text-sm">{formattedDate}</p>
           {!isCol && <FaDotCircle className="text-black/40 text-xs" />}
-          <p className="text-black text-sm">{relativeTime}</p>
+          {!isCol && <p className="text-black text-sm">{relativeTime}</p>}
         </div>
       </div>
     </Link>
