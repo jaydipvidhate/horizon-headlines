@@ -1,6 +1,14 @@
 import React from "react";
 
-const InputBox = ({ val, onChange, title, name, placeholder, type }) => {
+const InputBox = ({
+  val,
+  onChange,
+  title,
+  name,
+  placeholder,
+  type,
+  minLength,
+}) => {
   return (
     <div className="flex flex-col gap-2">
       <label className="text-black text-sm font-medium">{title}</label>
@@ -10,6 +18,7 @@ const InputBox = ({ val, onChange, title, name, placeholder, type }) => {
         value={val}
         name={name}
         onChange={(e) => onChange(e)}
+        minLength={minLength && 6}
         className="border border-black/20 p-2 rounded-md outline-black"
       />
     </div>

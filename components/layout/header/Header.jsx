@@ -5,11 +5,17 @@ import BorderdBtn from "@/components/atoms/btn/BorderdBtn";
 import SolidBtn from "@/components/atoms/btn/SolidBtn";
 import Image from "next/image";
 import Link from "next/link";
-import { IoMenu, IoClose } from "react-icons/io5";
+import { IoMenu, IoClose, IoLogOutOutline } from "react-icons/io5";
 import LoginCard from "@/components/cards/LoginCard";
 import RegisterCard from "@/components/cards/RegisterCard";
+import { useAuthContext } from "@/components/AuthProvider";
+import { getAuth, signOut } from "firebase/auth";
+import app from "@/lib/firebase";
 
 const Header = () => {
+  const { user } = useAuthContext();
+  const auth = getAuth(app);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginCardOpen, setIsLoginCardOpen] = useState(false);
   const [isRegisterCardOpen, setIsRegisterCardOpen] = useState(false);
@@ -35,8 +41,15 @@ const Header = () => {
   const registerOpen = () => setIsRegisterCardOpen(true);
   const registerClose = () => setIsRegisterCardOpen(false);
 
-  console.log(isLoginCardOpen);
-
+  const handleLogOut = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   return (
     <>
       <div className=" bg-white px-4 py-4">
@@ -79,16 +92,35 @@ const Header = () => {
                 </Link>
               ))}
             </div>
-            <div className="flex flex-col items-start gap-y-4">
-              <BorderdBtn
-                title="Login"
-                handleClick={() => (loginOpen(), menuClose())}
-              />
-              <SolidBtn
-                title="Register"
-                handleClick={() => (registerOpen(), menuClose())}
-              />
-            </div>
+            {user ? (
+              <>
+                <h4 className="text-base text-white font-light">
+                  Hello{", "}
+                  <span className="font-bold">
+                    {auth.currentUser.displayName}
+                  </span>
+                </h4>
+
+                <p
+                  onClick={handleLogOut}
+                  className="text-red-400 flex items-center gap-2 font-light cursor-pointer"
+                >
+                  Logout
+                  <IoLogOutOutline className="text-xl flex md:hidden cursor-pointer" />
+                </p>
+              </>
+            ) : (
+              <>
+                <BorderdBtn
+                  title="Login"
+                  handleClick={() => (loginOpen(), menuClose())}
+                />
+                <SolidBtn
+                  title="Register"
+                  handleClick={() => (registerOpen(), menuClose())}
+                />
+              </>
+            )}
           </div>
 
           <div className="items-center gap-6 md:gap-20 md:flex hidden">
@@ -106,8 +138,25 @@ const Header = () => {
               ))}
             </div>
             <div className="flex items-center gap-4">
-              <BorderdBtn title="Login" handleClick={loginOpen} />
-              <SolidBtn title="Register" handleClick={registerOpen} />
+              {user ? (
+                <>
+                  <h4 className="text-base text-black font-light">
+                    Hello{", "}
+                    <span className="font-bold">
+                      {auth.currentUser.displayName}
+                    </span>
+                  </h4>
+                  <IoLogOutOutline
+                    onClick={handleLogOut}
+                    className="text-xl hidden md:flex cursor-pointer text-black"
+                  />
+                </>
+              ) : (
+                <>
+                  <BorderdBtn title="Login" handleClick={loginOpen} />
+                  <SolidBtn title="Register" handleClick={registerOpen} />
+                </>
+              )}
             </div>
           </div>
         </div>

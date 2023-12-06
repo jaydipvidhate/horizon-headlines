@@ -1,18 +1,18 @@
 "use client";
-import Footer from "@/components/layout/footer/Footer";
-import CategoriesSection from "@/components/pages/home/CategoriesSection";
-import Hero from "@/components/pages/home/Hero";
+
+import GenericHero from "@/components/pages/GenericHero";
 import NewsSection from "@/components/pages/home/NewsSection";
 import app from "@/lib/firebase";
-import { getAllNews } from "@/lib/utilities/GetApi";
+import { getAllNews, getNewsByCategories } from "@/lib/utilities/GetApi";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useState, useEffect } from "react";
+
 const auth = getAuth(app);
 
-export default function Home() {
+const page = ({ params }) => {
   const [news, setNews] = useState([]);
   const [user, setUser] = useState("");
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
 
@@ -32,7 +32,7 @@ export default function Home() {
     const fetchNews = async () => {
       try {
         setLoading(true);
-        const newNews = await getAllNews(page, 5);
+        const newNews = await getNewsByCategories(page, 5, params.name);
 
         if (newNews.length < 5) {
           setHasMore(false);
@@ -66,16 +66,16 @@ export default function Home() {
   };
 
   return (
-    <>
-      <Hero heroNews={news[1]} />
-      {user && <CategoriesSection />}
+    <div>
+      <GenericHero title={params.name} />
       <NewsSection
         news={news}
         handleLoadMore={handleLoadMore}
         hasMore={hasMore}
         loading={loading}
       />
-      <Footer />
-    </>
+    </div>
   );
-}
+};
+
+export default page;

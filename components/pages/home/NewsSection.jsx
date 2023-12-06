@@ -3,9 +3,10 @@ import SectionTitle from "@/components/atoms/section/SectionTitle";
 import NewsCard from "@/components/cards/NewsCard";
 import TrendingCard from "@/components/cards/TrendingCard";
 import React, { useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { CiGrid41, CiGrid2H } from "react-icons/ci";
 
-const NewsSection = ({ news }) => {
+const NewsSection = ({ news, handleLoadMore, hasMore, loading }) => {
   const [isCol, setIsCol] = useState(false);
   const toggleGrid = () => setIsCol(!isCol);
   return (
@@ -34,6 +35,18 @@ const NewsSection = ({ news }) => {
             news.map((news, index) => (
               <NewsCard isCol={isCol} news={news} key={index} />
             ))}
+          {loading ? (
+            <AiOutlineLoading3Quarters className="text-black text-lg w-full items-center animate-spin" />
+          ) : (
+            hasMore && (
+              <button
+                onClick={handleLoadMore}
+                className="text-base text-black  underline-offset-4 hover:underline"
+              >
+                Load More
+              </button>
+            )
+          )}
         </div>
       </div>
       <div className="flex-1 h-screen flex  flex-col gap-2 md:gap-10">

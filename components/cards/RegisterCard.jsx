@@ -6,6 +6,17 @@ import Link from "next/link";
 import InputBox from "../atoms/input/InputBox";
 import SolidBtn from "../atoms/btn/SolidBtn";
 import BorderdBtn from "../atoms/btn/BorderdBtn";
+import app from "@/lib/firebase";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
+
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  getAuth,
+} from "firebase/auth";
+
+const auth = getAuth(app);
+const db = getFirestore(app);
 
 const RegisterCard = ({
   loginClose,
@@ -18,13 +29,46 @@ const RegisterCard = ({
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
 
-  const handleInputChange = (e, name) => {
+  const handleInputChange = (e) => {
     setRegisterDetails({ ...registerDetails, [e.target.name]: e.target.value });
   };
 
-  const handleOnSubmit = () => {
-    console.log(registerDetails);
+  const handleOnSubmit = async () => {
+    setLoading(true);
+    let result = null,
+      error = null;
+    try {
+      result = await createUserWithEmailAndPassword(
+        auth,
+        registerDetails.email,
+        registerDetails.password
+      );
+
+      await updateProfile(auth.currentUser, {
+        displayName: registerDetails.name.trim(),
+      });
+      console.log(result.user.uid, {
+        name: registerDetails.name,
+        email: registerDetails.email,
+      });
+      await setDoc(doc(db, "users", result.user.uid), {
+        name: registerDetails.name,
+        email: registerDetails.email,
+      })
+        .then(() => console.log("ader"))
+        .catch((err) => console.log(err));
+
+      setLoading(false);
+      registerClose();
+
+      console.log("User registered successfully:", result.user);
+    } catch (e) {
+      error = e;
+    }
+
+    console.log(error);
   };
 
   return (
@@ -65,10 +109,14 @@ const RegisterCard = ({
           placeholder="******"
           title="Password"
           type="password"
+          minLength={6}
           val={registerDetails.password}
         />
       </div>
-      <SolidBtn title="Register" handleClick={handleOnSubmit} />
+      <SolidBtn
+        title={loading ? "Loading" : "Register"}
+        handleClick={!loading ? handleOnSubmit : ""}
+      />
       <BorderdBtn
         title="Login Now"
         handleClick={() => (loginOpen(), registerClose())}

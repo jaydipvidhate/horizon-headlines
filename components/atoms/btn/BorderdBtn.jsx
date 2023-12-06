@@ -3,7 +3,7 @@ import React from "react";
 const BorderdBtn = ({ title, light, handleClick }) => {
   return (
     <button
-      onClick={handleClick}
+      onClick={handleClick ? handleClick : null}
       className={`border-2 ${
         light
           ? "border-white text-white hover:bg-white hover:text-black"

@@ -2,23 +2,40 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import InputBox from "../atoms/input/InputBox";
 import SolidBtn from "../atoms/btn/SolidBtn";
 import BorderdBtn from "../atoms/btn/BorderdBtn";
+import app from "@/lib/firebase";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 
+const auth = getAuth(app);
 const LoginCard = ({ loginClose, loginOpen, registerClose, registerOpen }) => {
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e, name) => {
     setLoginDetails({ ...loginDetails, [e.target.name]: e.target.value });
   };
 
-  const handleOnSubmit = () => {
-    console.log(loginDetails);
+  const handleOnSubmit = async () => {
+    setLoading(true);
+    let result = null,
+      error = null;
+    try {
+      result = await signInWithEmailAndPassword(
+        auth,
+        loginDetails.email,
+        loginDetails.password
+      );
+    } catch (e) {
+      error = e;
+    }
+
+    setLoading(false);
+    return loginClose();
   };
 
   return (
@@ -52,7 +69,10 @@ const LoginCard = ({ loginClose, loginOpen, registerClose, registerOpen }) => {
           val={loginDetails.password}
         />
       </div>
-      <SolidBtn title="Login" handleClick={handleOnSubmit} />
+      <SolidBtn
+        title={loading ? "Loading" : "Login"}
+        handleClick={!loading && handleOnSubmit}
+      />
       <BorderdBtn
         title="Register Now"
         handleClick={() => (registerOpen(), loginClose())}
