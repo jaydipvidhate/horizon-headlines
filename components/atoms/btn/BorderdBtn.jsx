@@ -1,8 +1,9 @@
 import React from "react";
 
-const BorderdBtn = ({ title, light }) => {
+const BorderdBtn = ({ title, light, handleClick }) => {
   return (
     <button
+      onClick={handleClick}
       className={`border-2 ${
         light
           ? "border-white text-white hover:bg-white hover:text-black"
