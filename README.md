@@ -73,10 +73,7 @@ Horizon Headlines is a dynamic and user-friendly news web application that deliv
 ## Table of Contents (Optional)
 
 - [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
+- [Thanks](#Thanks)
 
 ## Installation
 
