@@ -52,23 +52,16 @@ Horizon Headlines is a dynamic and user-friendly news web application that deliv
 
 #### Mobile - Home Page
 
-![Mobile View Screenshot](src/images/MobileHome.webp)
+<div style="display: flex; justify-content: space-between;">
+  <img src="src/images/MobileHome.webp" alt="Mobile MobileHome" width="30%" />
+  <img src="src/images/MobileListCol.webp" alt="Mobile MobileListCol" width="30%" />
+  <img src="src/images/MobileListGrid.webp" alt="Mobile MobileListGrid" width="30%" />
+</div>
 
-#### Mobile - News List Page
-
-![Mobile View Screenshot](src/images/MobileListCol.webp)
-
-#### Mobile - News Grid List Page
-
-![Mobile View Screenshot](src/images/MobileListGrid.webp)
-
-#### Desktop - Login Page
-
-![Mobile View Screenshot](src/images/MobileLogin.webp)
-
-#### Desktop - Category Page
-
-![Mobile View Screenshot](src/images/MobileCategory.webp)
+<div style="display: flex; justify-content: space-between;">
+  <img src="src/images/MobileLogin.webp" alt="Mobile MobileLogin" width="40%" />
+  <img src="src/images/MobileCategory.webp" alt="Mobile MobileCategory" width="40%" />
+</div>
 
 ## Table of Contents (Optional)
 
