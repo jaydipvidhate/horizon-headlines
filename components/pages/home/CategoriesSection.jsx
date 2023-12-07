@@ -34,7 +34,7 @@ const CategoriesSection = () => {
       <div className="p-4">
         <SectionTitle title="Categories" />
       </div>
-      <div className="p-4 flex gap-x-4 md:gap-x-6 overflow-x-auto md:px-10 no-scrollbar">
+      <div className="p-4 flex gap-x-4 md:gap-x-6 overflow-x-auto md:px-2 no-scrollbar">
         {categories?.length > 0 &&
           categories.map((category, index) => (
             <CategoriesCard

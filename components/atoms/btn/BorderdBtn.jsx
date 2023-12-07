@@ -1,8 +1,15 @@
 import React from "react";
 
-const BorderdBtn = ({ title }) => {
+const BorderdBtn = ({ title, light, handleClick }) => {
   return (
-    <button className="border-2 border-primary px-4 rounded-full py-1 text-primary hover:bg-primary hover:text-white">
+    <button
+      onClick={handleClick ? handleClick : null}
+      className={`border-2 ${
+        light
+          ? "border-white text-white hover:bg-white hover:text-black"
+          : "border-primary text-primary hover:bg-primary hover:text-white"
+      } px-4 rounded-full py-1  duration-150 ease-in-out`}
+    >
       {title}
     </button>
   );
