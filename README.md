@@ -53,14 +53,14 @@ Horizon Headlines is a dynamic and user-friendly news web application that deliv
 #### Mobile - Home Page
 
 <div style="display: flex; justify-content: space-between;">
-  <img src="src/images/MobileHome.webp" alt="Mobile MobileHome" width="30%" />
-  <img src="src/images/MobileListCol.webp" alt="Mobile MobileListCol" width="30%" />
-  <img src="src/images/MobileListGrid.webp" alt="Mobile MobileListGrid" width="30%" />
+  <img src="src/images/MobileHome.webp" alt="Mobile MobileHome" style="width: 30%; border: 2px solid #00000060; border-radius: 4px;"/>
+  <img src="src/images/MobileListCol.webp" alt="Mobile MobileListCol" style="width: 30%; border: 2px solid #00000060; border-radius: 4px;" />
+  <img src="src/images/MobileListGrid.webp" alt="Mobile MobileListGrid" style="width: 30%; border: 2px solid #00000060; border-radius: 4px;" />
 </div>
 
 <div style="display: flex;">
-  <img src="src/images/MobileLogin.webp" alt="Mobile MobileLogin" width="30%" />
-  <img src="src/images/MobileCategory.webp" alt="Mobile MobileCategory" width="30%" />
+  <img src="src/images/MobileLogin.webp" alt="Mobile MobileLogin" style="width: 30%; border: 2px solid #00000060; border-radius: 4px;" />
+  <img src="src/images/MobileCategory.webp" alt="Mobile MobileCategory" style="width: 30%; border: 2px solid #00000060; border-radius: 4px;" />
 </div>
 
 ## Table of Contents (Optional)
