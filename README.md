@@ -22,53 +22,53 @@ Horizon Headlines is a dynamic and user-friendly news web application that deliv
 
 #### Desktop - Home Page
 
-![Web View Desktop Screenshot](src/image/WebHome.webp)
+![Web View Desktop Screenshot](src/images/WebHome.webp)
 
 #### Desktop - News List Page
 
-![Web View Desktop Screenshot](src/image/WebList.webp)
+![Web View Desktop Screenshot](src/images/WebList.webp)
 
 #### Desktop - New Likes with login user
 
-![Web View Desktop Screenshot](src/image/WebListLike.webp)
+![Web View Desktop Screenshot](src/images/WebListLike.webp)
 
 #### Desktop - In App Preview Page
 
-![Web View Desktop Screenshot](src/image/WebInApp.webp)
+![Web View Desktop Screenshot](src/images/WebInApp.webp)
 
 #### Desktop - Login Page
 
-![Web View Desktop Screenshot](src/image/WebLogin.webp)
+![Web View Desktop Screenshot](src/images/WebLogin.webp)
 
 #### Desktop - Register Page
 
-![Web View Desktop Screenshot](src/image/WebRegister.webp)
+![Web View Desktop Screenshot](src/images/WebRegister.webp)
 
 #### Desktop - Category Page
 
-![Web View Desktop Screenshot](src/image/WebCategory.webp)
+![Web View Desktop Screenshot](src/images/WebCategory.webp)
 
 ### Mobile View
 
 #### Mobile - Home Page
 
-![Mobile View Screenshot](src/image/MobileHome.webp)
+![Mobile View Screenshot](src/images/MobileHome.webp)
 
 #### Mobile - News List Page
 
-![Mobile View Screenshot](src/image/MobileListCol.webp)
+![Mobile View Screenshot](src/images/MobileListCol.webp)
 
 #### Mobile - News Grid List Page
 
-![Mobile View Screenshot](src/image/MobileListGrid.webp)
+![Mobile View Screenshot](src/images/MobileListGrid.webp)
 
 #### Desktop - Login Page
 
-![Mobile View Screenshot](src/image/MobileLogin.webp)
+![Mobile View Screenshot](src/images/MobileLogin.webp)
 
 #### Desktop - Category Page
 
-![Mobile View Screenshot](src/image/MobileCategory.webp)
+![Mobile View Screenshot](src/images/MobileCategory.webp)
 
 ## Table of Contents (Optional)
 
