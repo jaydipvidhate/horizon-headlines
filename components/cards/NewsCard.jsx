@@ -88,7 +88,24 @@ const NewsCard = ({ news, isCol }) => {
   };
 
   return (
-    <>
+    <div className="relative">
+      <div className="absolute top-0 right-0 z-20">
+        {auth.currentUser ? (
+          loading ? (
+            <AiOutlineLoading3Quarters className="text-black text-lg  animate-spin" />
+          ) : isFav ? (
+            <RxHeartFilled
+              onClick={() => (!loading ? handleAddToFavorite() : "")}
+              className="text-black text-xl absolute top-0 right-0"
+            />
+          ) : (
+            <RxHeart
+              onClick={() => (!loading ? handleAddToFavorite() : "")}
+              className="text-black text-xl "
+            />
+          )
+        ) : null}
+      </div>
       <div
         onClick={() => setNewsClicked(news.url)}
         className="flex gap-4 cursor-pointer group items-start flex-col md:flex-row"
@@ -110,21 +127,6 @@ const NewsCard = ({ news, isCol }) => {
           )}
         </div>
         <div className="flex-1 flex flex-col gap-2 justify-between items-start relative pr-6">
-          {auth.currentUser ? (
-            loading ? (
-              <AiOutlineLoading3Quarters className="text-black text-lg absolute top-0 right-0 animate-spin" />
-            ) : isFav ? (
-              <RxHeartFilled
-                onClick={() => (!loading ? handleAddToFavorite() : "")}
-                className="text-black text-xl absolute top-0 right-0"
-              />
-            ) : (
-              <RxHeart
-                onClick={() => (!loading ? handleAddToFavorite() : "")}
-                className="text-black text-xl absolute top-0 right-0"
-              />
-            )
-          ) : null}
           <div>
             <h4 className="text-base font-semibold leading-tight">
               {news.title}
@@ -164,7 +166,7 @@ const NewsCard = ({ news, isCol }) => {
           ></iframe>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

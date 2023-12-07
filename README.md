@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Name: Horizon Headlines
 
-## Getting Started
+# Horizon Headlines - Your Trusted Source for Timely Updates
 
-First, run the development server:
+**Brief Description:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Horizon Headlines is a dynamic and user-friendly news web application that delivers the latest and most relevant news from around the world. With a clean and intuitive interface, Horizon Headlines aims to keep users informed and engaged with up-to-the-minute news articles on diverse topics.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Features:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Comprehensive Coverage:** Stay informed with a wide range of news articles covering politics, technology, entertainment, health, and more.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Personalized Experience:** Customize your news feed by selecting your preferred topics, ensuring you get updates on the subjects that matter most to you.
 
-## Learn More
+- **Responsive Design:** Enjoy a seamless reading experience across devices, whether you're on your desktop, tablet, or mobile phone.
 
-To learn more about Next.js, take a look at the following resources:
+- **User-Friendly Interface:** Navigate through articles effortlessly with an easy-to-use interface designed for a smooth and enjoyable user experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Screenshots
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Web View
 
-## Deploy on Vercel
+#### Desktop - Home Page
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Web View Desktop Screenshot](src/image/WebHome.webp)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### Desktop - News List Page
+
+![Web View Desktop Screenshot](src/image/WebList.webp)
+
+#### Desktop - New Likes with login user
+
+![Web View Desktop Screenshot](src/image/WebListLike.webp)
+
+#### Desktop - In App Preview Page
+
+![Web View Desktop Screenshot](src/image/WebInApp.webp)
+
+#### Desktop - Login Page
+
+![Web View Desktop Screenshot](src/image/WebLogin.webp)
+
+#### Desktop - Register Page
+
+![Web View Desktop Screenshot](src/image/WebRegister.webp)
+
+#### Desktop - Category Page
+
+![Web View Desktop Screenshot](src/image/WebCategory.webp)
+
+### Mobile View
+
+#### Mobile - Home Page
+
+![Mobile View Screenshot](src/image/MobileHome.webp)
+
+#### Mobile - News List Page
+
+![Mobile View Screenshot](src/image/MobileListCol.webp)
+
+#### Mobile - News Grid List Page
+
+![Mobile View Screenshot](src/image/MobileListGrid.webp)
+
+#### Desktop - Login Page
+
+![Mobile View Screenshot](src/image/MobileLogin.webp)
+
+#### Desktop - Category Page
+
+![Mobile View Screenshot](src/image/MobileCategory.webp)
+
+## Table of Contents (Optional)
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Installation
+
+### News API Key
+
+1. **Obtain News API Key:**
+
+   - Visit [News API website](https://newsapi.org/) and sign up for an account.
+   - Obtain your News API key from the dashboard.
+
+2. **Set Up Environment Variable:**
+   - Create a file named `.env` in the root of your project.
+   - Add the following line to the `.env` file:
+     ```env
+     NEXT_PUBLIC_NEWS_API_KEY=your_news_api_key
+     ```
+   - Replace `your_news_api_key` with the actual News API key.
+
+### Firebase Configuration
+
+1. **Set Up Firebase Project:**
+
+   - Visit [Firebase Console](https://console.firebase.google.com/) and create a new project.
+   - Enable Authentication and set up Firestore based on your project requirements.
+
+2. **Get Firebase Configuration:**
+
+   - In the Firebase Console, go to Project Settings > General.
+   - Scroll down to "Your apps" and click on the web app (</> icon).
+   - Copy the configuration object.
+
+3. **Set Up Environment Variable:**
+   - In the `.env` file, add the following lines:
+     ```env
+     NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+     NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+     NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_firebase_project_id
+     NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+     NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+     NEXT_PUBLIC_FIREBASE_APP_ID=your_firebase_app_id
+     ```
+   - Replace `your_firebase_*` placeholders with the actual values from the Firebase configuration.
+
+## Thanks
+
+Thank you for checking out my project! I appreciate your interest.

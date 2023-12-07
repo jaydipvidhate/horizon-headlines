@@ -79,7 +79,7 @@ export default function Home() {
             is your gateway to a world of knowledge and inspiration."
         />
       </Head>
-      <Hero heroNews={news[1]} />
+      <Hero heroNews={news[2]} />
       <CategoriesSection />
       <NewsSection
         news={news}
